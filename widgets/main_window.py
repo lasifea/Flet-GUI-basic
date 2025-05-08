@@ -99,30 +99,26 @@ class MainWindow:
 
     def switch_windows(self, e: ft.ControlEvent):
         """点击左菜单栏切换窗口"""
-        current_window = self.content_stack.controls[0]
-        if e.control.selected_index == 0 and current_window != self.home_window:
+        if e.control.selected_index == 0:
             self.content_stack.controls[0] = self.home_window
-            self.content_stack.update()
-        if e.control.selected_index == 1 and current_window != self.interests_window:
+        elif e.control.selected_index == 1:
             if self.interests_window is None:
                 self.interests_window = InterestsWindow()
             self.content_stack.controls[0] = self.interests_window
-            self.content_stack.update()
-        if e.control.selected_index == 2 and current_window != self.markdown_window:
+        elif e.control.selected_index == 2:
             if self.markdown_window is None:
                 self.markdown_window = MarkdownWindow()
             self.content_stack.controls[0] = self.markdown_window
-            self.content_stack.update()
-        if e.control.selected_index == 3 and current_window != self.data_overview_window:
+        elif e.control.selected_index == 3:
             if self.data_overview_window is None:
                 self.data_overview_window = DataOverviewWindow()
             self.content_stack.controls[0] = self.data_overview_window
-            self.content_stack.update()
-        if e.control.selected_index == 4 and current_window != self.setting_window:
+        elif e.control.selected_index == 4:
             self.content_stack.controls[0] = self.setting_window
-            self.content_stack.update()
 
+        self.content_stack.update()
         # 切换界面触发的特殊事件，如保存设置、释放内存等
+        current_window = self.content_stack.controls[0]
         if current_window != self.setting_window:
             self.setting_window.save_config()
         if current_window != self.markdown_window:

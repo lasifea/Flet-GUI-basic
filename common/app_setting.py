@@ -7,7 +7,7 @@ from dataclasses import dataclass
 class Setting:
     """软件设置"""
     title: str = "Flet-GUI-basic"
-    version: str = '0.4.0'
+    version: str = '0.4.1'
     _app_dir: str = os.getenv('APP_DIR')
 
     # 运行时文件保存路径
